@@ -5,5 +5,4 @@ f = open('versailles_tweets_100.json', 'r', encoding="utf-8")
 
 data = json.load(f)
 
-for tweet in data:
-    print(tweet)
+print(data[0])
