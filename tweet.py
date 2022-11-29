@@ -4,14 +4,11 @@ import re
 # Class Tweet et Methods
 class Tweet:
 
-    def __init__(self, tweet_id, author_id, text, geo, lang, date, hashtags):
+    def __init__(self, tweet_id, author_id, text, hashtags):
         self.tweet_id = tweet_id
         self.author_id = author_id
         self.text = re.sub("[^\w]"," ",text)
-        self.geo = geo
-        self.lang = lang
-        self.date = date
-        self.hashtags = (hashtags, 0)
+        self.hashtags = hashtags
 
 
     def get_nb_hashtags(self):
