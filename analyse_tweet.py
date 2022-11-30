@@ -158,9 +158,12 @@ def start_inpoda():
                     print(tweet.get_text())
 
         
-        #
+        # Retourne l'ensemble de tweets mentionnant un utilisateur
         elif action == 13:
-            pass
+            user = input("Entrer le pseudo de l'utilisateur\n   >")
+            for tweet in tweets:
+                if user in tweet.get_mentions():
+                    print(tweet.get_text())
         
         #
         elif action == 14:
