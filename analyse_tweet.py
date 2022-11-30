@@ -35,14 +35,19 @@ def start_inpoda():
         
         # Processing Data
         for tweet in data:
+            mentions = []
             hashtags = []
             try:
                 for text in tweet["entities"]["hashtags"]:
                     hashtags.append(text["tag"])
             except KeyError:
                 pass
-            tweets.append(Tweet(tweet["id"], tweet["author_id"], tweet["text"], hashtags))
-        print(tweets)
+            try:
+                for text in tweet["entities"]["mentions"]:
+                    mentions.append(text["username"])
+            except KeyError:
+                pass
+            tweets.append(Tweet(tweet["id"], tweet["author_id"], tweet["text"], hashtags, mentions))
         
         # Boucle instructions
         while action < 0 or action > 15 or not type(action) == int:
@@ -51,12 +56,12 @@ def start_inpoda():
             except ValueError:
                 pass
         
-        # trouve l'id de l'auteur d'un tweet à partir de l'id du tweet
+        # affiche l'id de l'auteur d'un tweet à partir de l'id du tweet
         if action == 0:
             arg = input("Rentrer l'id du tweet\n >")
             print(f"L'id de l'auteur du tweet : {get_tweet(tweet_id=arg).get_author_id()}")
 
-        # retourne la liste de hashtags d'un tweet à partir de l'id du tweet
+        # affiche la liste de hashtags d'un tweet à partir de l'id du tweet
         elif action == 1:
             tweet = get_tweet(tweet_id=input("Rentrer l'id du tweet\n >"))
             if len(tweet.get_hashtags()) == 0:
@@ -64,34 +69,67 @@ def start_inpoda():
             else:
                 print("Liste de hashtags: ")
                 for tag in tweet.get_hashtags():
-                    print(tag)
+                    print(f"    >{tag}")
 
+        # affiche la liste de personnes mentionnées dans un tweet à partir de l'id du tweet
         elif action == 2:
-            pass
+            tweet = get_tweet(tweet_id=input("Rentrer l'id du tweet\n >"))
+            if len(tweet.get_mentions()) == 0:
+                print("Pas de mentions dans ce tweet")
+            else:
+                print("Liste de mentions: ")
+                for at in tweet.get_mentions():
+                    print(f"    >{at}")
+        
+        # 
         elif action == 3:
             pass
+        
+        #
         elif action == 4:
             pass
+        
+        #
         elif action == 5:
             pass
+        
+        #
         elif action == 6:
             pass
+        
+        #
         elif action == 7:
             pass
+        
+        #
         elif action == 8:
             pass
+        
+        #
         elif action == 9:
             pass
+        
+        #
         elif action == 10:
             pass
+        
+        #
         elif action == 11:
             pass
+        
+        #
         elif action == 12:
             pass
+        
+        #
         elif action == 13:
             pass
+        
+        #
         elif action == 14:
             pass
+        
+        #
         elif action == 15:
             pass
 

@@ -4,11 +4,15 @@ import re
 # Class Tweet et Methods
 class Tweet:
 
-    def __init__(self, tweet_id, author_id, text, hashtags):
+    def __init__(self, tweet_id, author_id, text, hashtags, mentions):
         self.tweet_id = tweet_id
         self.author_id = author_id
         self.text = re.sub("[^\w]"," ",text)
         self.hashtags = hashtags
+        self.mentions = mentions
+
+    def get_mentions(self):
+        return self.mentions
 
     def get_text(self):
         return self.text
