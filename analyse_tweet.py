@@ -13,9 +13,13 @@ def start_inpoda():
         
         for tweet in data:
             hashtags = []
-            for hashtag in tweet["entities"]["hashtags"]:
-                hashtags.append(hashtag["tag"])
+            try:
+                for hashtags in tweet["entities"]["hashtags"]:
+                    print(hashtags["tag"])
+            except KeyError:
+                pass
             tweets.append(Tweet(tweet["id"], tweet["author_id"], tweet["text"], hashtags))
+        print(tweets)
         
         while action < 0 or action > 15 or not type(action) == int:
             try:
