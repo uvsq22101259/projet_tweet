@@ -104,7 +104,7 @@ def start_inpoda():
             names  = list(hashs.keys())
             values = list(hashs.values())
             print(values)
-            mpt.barh(range(len(hashs)), values)
+            mpt.barh(range(len(hashs)), values, tick_label=names, )
             mpt.show()
         # Top k utilisateurs
         elif action == 6:
