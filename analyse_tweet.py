@@ -101,21 +101,30 @@ def start_inpoda():
             print(hashs)
             num = input("Rentrer le nombre de top hashtags\n    >")
             
-        #
+        # Top k utilisateurs
         elif action == 6:
             pass
         
-        #
+        # Top K utilisateurs mentionnés
         elif action == 7:
-            pass
+            ments = {}
+            for tweet in tweets:
+                for men in tweet.get_mentions():
+                    if men not in ments:
+                        ments[men] = 1
+                    else:
+                        ments[men] += 1
+            print(ments)
+            num = input("Rentrer le nombre de top utilisateurs\n    >")
         
-        #
+        # Top K topics
         elif action == 8:
             pass
         
-        #
+        # Nombre de publications par utilisateur
         elif action == 9:
-            pass
+            for tweet in tweets:
+                
         
         #
         elif action == 10:
