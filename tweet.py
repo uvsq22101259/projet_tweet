@@ -19,11 +19,8 @@ class Tweet:
     def get_author_id(self):
         return self.author_id
 
-    def get_nb_hashtags(self):
-        return self.hashtags[1]
-
     def get_hashtags(self):
-        return self.hashtags[0]
+        return self.hashtags
 
     def sentiment(self):
         blob = TextBlob(self.text)
