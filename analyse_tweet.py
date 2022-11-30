@@ -58,12 +58,12 @@ def start_inpoda():
         
         # affiche l'id de l'auteur d'un tweet à partir de l'id du tweet
         if action == 0:
-            arg = input("Rentrer l'id du tweet\n >")
+            arg = input("Rentrer l'id du tweet\n    >")
             print(f"L'id de l'auteur du tweet : {get_tweet(tweet_id=arg).get_author_id()}")
 
         # affiche la liste de hashtags d'un tweet à partir de l'id du tweet
         elif action == 1:
-            tweet = get_tweet(tweet_id=input("Rentrer l'id du tweet\n >"))
+            tweet = get_tweet(tweet_id=input("Rentrer l'id du tweet\n    >"))
             if len(tweet.get_hashtags()) == 0:
                 print("Pas de hashtags dans ce tweet")
             else:
@@ -73,7 +73,7 @@ def start_inpoda():
 
         # affiche la liste de personnes mentionnées dans un tweet à partir de l'id du tweet
         elif action == 2:
-            tweet = get_tweet(tweet_id=input("Rentrer l'id du tweet\n >"))
+            tweet = get_tweet(tweet_id=input("Rentrer l'id du tweet\n    >"))
             if len(tweet.get_mentions()) == 0:
                 print("Pas de mentions dans ce tweet")
             else:
@@ -131,17 +131,31 @@ def start_inpoda():
                     users[tweet.get_author_id()] += 1
             print(users)
         
-        #
+        # Nombre de publications par hashtag
         elif action == 10:
-            pass
+            hashs = {}
+            for tweet in tweets:
+                for tag in tweet.get_hashtags():
+                    if tag not in hashs:
+                        hashs[tag] = 1
+                    else:
+                        hashs[tag] += 1
+            print("Hashtags et le nombre de publications dans lesquelles ils aparaissent:")
+            for key, value in hashs.items():
+                print(f"{value}   {key}")
         
-        #
+        # Nombre de publis par topic
         elif action == 11:
             pass
         
-        #
+        # Nombre de tweets par un utilisateur
         elif action == 12:
-            pass
+            user = "1339914264522461187"
+            print(f"Les tweets de cet utilisateurs: ")
+            for tweet in tweets:
+                if tweet.get_author_id() == user:
+                    print(tweet.get_text())
+
         
         #
         elif action == 13:
