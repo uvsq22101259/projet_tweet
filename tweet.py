@@ -10,6 +10,14 @@ class Tweet:
         self.text = re.sub("[^\w]"," ",text)
         self.hashtags = hashtags
 
+    def get_text(self):
+        return self.text
+
+    def get_tweet_id(self):
+        return self.tweet_id
+
+    def get_author_id(self):
+        return self.author_id
 
     def get_nb_hashtags(self):
         return self.hashtags[1]
