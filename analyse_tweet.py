@@ -1,6 +1,6 @@
 import json
 from tweet import Tweet
-import matplotlib as mpt
+import matplotlib.pyplot as mpt
 
 tweets = []
 
@@ -101,7 +101,11 @@ def start_inpoda():
                         hashs[tag] += 1
             print(hashs)
             num = input("Rentrer le nombre de top hashtags\n    >")
-            
+            names  = list(hashs.keys())
+            values = list(hashs.values())
+            print(values)
+            mpt.barh(range(len(hashs)), values)
+            mpt.show()
         # Top k utilisateurs
         elif action == 6:
             pass
