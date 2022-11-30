@@ -165,11 +165,22 @@ def start_inpoda():
                 if user in tweet.get_mentions():
                     print(tweet.get_text())
         
-        #
+        # Retourne les utilisateurs ayant utilisés un certain hashtag
         elif action == 14:
-            pass
+            hashtag = input("Entrer le hashtag\n    >")
+            users = []
+            for tweet in tweets:
+                if hashtag in tweet.get_hashtags():
+                    johndoe = tweet.get_author_id()
+                    if johndoe not in users:
+                        users.append(johndoe)
+            print("Les utilisateurs ayant utilisé ce hashtag")
+            for i in users:
+                print(i)
+
+
         
-        #
+        # Renvoie les utilisateurs mentionnés par un utilisateur
         elif action == 15:
             pass
 
