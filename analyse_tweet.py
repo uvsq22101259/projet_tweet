@@ -182,9 +182,19 @@ def start_inpoda():
         
         # Renvoie les utilisateurs mentionnés par un utilisateur
         elif action == 15:
-            pass
+            user = input("Entrer l'id de l'utilisateur\n    >")
+            mentions = []
+            for tweet in tweets:
+                if tweet.get_author_id() == user:
+                    for men in tweet.get_mentions():
+                        if men not in mentions:
+                            mentions.append(men)
+            print(mentions)
 
-        
+
+
+
+
         break
 
 start_inpoda()
