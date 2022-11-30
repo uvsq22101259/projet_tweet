@@ -123,8 +123,13 @@ def start_inpoda():
         
         # Nombre de publications par utilisateur
         elif action == 9:
+            users = {}
             for tweet in tweets:
-                
+                if tweet.get_author_id() not in users:
+                    users[tweet.get_author_id()] = 1
+                else:
+                    users[tweet.get_author_id()] += 1
+            print(users)
         
         #
         elif action == 10:
