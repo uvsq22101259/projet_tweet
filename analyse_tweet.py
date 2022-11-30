@@ -100,12 +100,13 @@ def start_inpoda():
                     else:
                         hashs[tag] += 1
             print(hashs)
-            # num = input("Rentrer le nombre de top hashtags\n    >")
-            names  = list(hashs.keys())
+            rang = len(hashs) + 1
+            while not rang <= len(hashs):
+                rang = int(input("Rentrer le nombre de top hashtags\n    >"))
+            names  = sorted(hashs, key= hashs.get, reverse= True )
             values = list(hashs.values())
-            for i  in range( len(values)) :
-                values[i] = int(values[i])
-            mpt.barh(range(len(hashs)), (values), tick_label=names,  )
+            values.sort(reverse= True)
+            mpt.barh(range(rang), (values)[:rang], tick_label=names[:rang] )
             mpt.show()
         # Top k utilisateurs
         elif action == 6:
@@ -121,7 +122,15 @@ def start_inpoda():
                     else:
                         ments[men] += 1
             print(ments)
-            num = input("Rentrer le nombre de top utilisateurs\n    >")
+            print(len(ments))
+            rang = len(ments) + 1
+            while not rang <= len(ments):
+                rang = int(input("Rentrer le nombre de top utilisateurs mentionnés \n    >"))
+            names  = sorted(ments, key= ments.get, reverse= True )
+            values = list(ments.values())
+            values.sort(reverse= True)
+            mpt.barh(range(rang), (values)[:rang], tick_label=names[:rang] )
+            mpt.show()
         
         # Top K topics
         elif action == 8:
@@ -136,6 +145,15 @@ def start_inpoda():
                 else:
                     users[tweet.get_author_id()] += 1
             print(users)
+            print(len(users))
+            rang = len(users) + 1
+            while not rang <= len(users):
+                rang = int(input("Rentrer le nombre d'utilisateurs que vous voulez \n    >"))
+            names  = sorted(users, key= users.get, reverse= True )
+            values = list(users.values())
+            values.sort(reverse= True)
+            mpt.barh(range(rang), (values)[:rang], tick_label=names[:rang] )
+            mpt.show()
         
         # Nombre de publications par hashtag
         elif action == 10:
