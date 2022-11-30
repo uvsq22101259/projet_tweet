@@ -151,7 +151,7 @@ def start_inpoda():
         
         # Nombre de tweets par un utilisateur
         elif action == 12:
-            user = "1339914264522461187"
+            user = input("Entrer l'id de l'utilisateur\n    >")
             print(f"Les tweets de cet utilisateurs: ")
             for tweet in tweets:
                 if tweet.get_author_id() == user:
