@@ -100,11 +100,12 @@ def start_inpoda():
                     else:
                         hashs[tag] += 1
             print(hashs)
-            num = input("Rentrer le nombre de top hashtags\n    >")
+            # num = input("Rentrer le nombre de top hashtags\n    >")
             names  = list(hashs.keys())
             values = list(hashs.values())
-            print(values)
-            mpt.barh(range(len(hashs)), values, tick_label=names, )
+            for i  in range( len(values)) :
+                values[i] = int(values[i])
+            mpt.barh(range(len(hashs)), (values), tick_label=names,  )
             mpt.show()
         # Top k utilisateurs
         elif action == 6:
