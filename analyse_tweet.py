@@ -37,8 +37,8 @@ def start_inpoda():
         for tweet in data:
             hashtags = []
             try:
-                for hashtags in tweet["entities"]["hashtags"]:
-                    print(hashtags["tag"])
+                for text in tweet["entities"]["hashtags"]:
+                    hashtags.append(text["tag"])
             except KeyError:
                 pass
             tweets.append(Tweet(tweet["id"], tweet["author_id"], tweet["text"], hashtags))
@@ -58,7 +58,13 @@ def start_inpoda():
 
         # retourne la liste de hashtags d'un tweet à partir de l'id du tweet
         elif action == 1:
-            pass
+            tweet = get_tweet(tweet_id=input("Rentrer l'id du tweet\n >"))
+            if len(tweet.get_hashtags()) == 0:
+                print("Pas de hashtags dans ce tweet")
+            else:
+                print("Liste de hashtags: ")
+                for tag in tweet.get_hashtags():
+                    print(tag)
 
         elif action == 2:
             pass
