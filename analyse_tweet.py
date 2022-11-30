@@ -81,18 +81,26 @@ def start_inpoda():
                 for at in tweet.get_mentions():
                     print(f"    >{at}")
         
-        # 
+        # analyse le sentiment de la publication
         elif action == 3:
             pass
         
-        #
+        # identifie les topics de la publication
         elif action == 4:
             pass
         
-        #
+        # top K hashtags
         elif action == 5:
-            pass
-        
+            hashs = {}
+            for tweet in tweets:
+                for tag in tweet.get_hashtags():
+                    if tag not in hashs:
+                        hashs[tag] = 1
+                    else:
+                        hashs[tag] += 1
+            print(hashs)
+            num = input("Rentrer le nombre de top hashtags\n    >")
+            
         #
         elif action == 6:
             pass
