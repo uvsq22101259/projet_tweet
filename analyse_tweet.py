@@ -108,6 +108,7 @@ def start_inpoda():
             values.sort(reverse= True)
             mpt.barh(range(rang), (values)[:rang], tick_label= names[:rang] )
             mpt.show()
+
         # Top k utilisateurs
         elif action == 6:
             nbr_tweet = {}
@@ -216,8 +217,6 @@ def start_inpoda():
             for i in users:
                 print(i)
 
-
-        
         # Renvoie les utilisateurs mentionnés par un utilisateur
         elif action == 15:
             user = input("Entrer l'id de l'utilisateur\n    >")
@@ -228,9 +227,6 @@ def start_inpoda():
                         if men not in mentions:
                             mentions.append(men)
             print(mentions)
-
-
-
 
 
         break
