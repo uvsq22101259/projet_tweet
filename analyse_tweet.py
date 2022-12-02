@@ -99,7 +99,7 @@ def start_inpoda():
                         hashs[tag] = 1
                     else:
                         hashs[tag] += 1
-            print(hashs)
+
             rang = len(hashs) + 1
             while not rang <= len(hashs):
                 rang = int(input("Rentrer le nombre de top hashtags\n    >"))
@@ -117,7 +117,7 @@ def start_inpoda():
                         nbr_tweet[tweet.get_author_id()] = 1
                     else:
                         nbr_tweet[tweet.get_author_id()] += 1
-            print(nbr_tweet)
+
             rang = len(nbr_tweet) + 1
             while not rang <= len(nbr_tweet):
                 rang = int(input("Rentrer le nombre de top utilisateurs\n    >"))
@@ -136,6 +136,7 @@ def start_inpoda():
                         ments[men] = 1
                     else:
                         ments[men] += 1
+                        
             print(ments)
             print(len(ments))
             rang = len(ments) + 1
@@ -226,7 +227,8 @@ def start_inpoda():
                     for men in tweet.get_mentions():
                         if men not in mentions:
                             mentions.append(men)
-            print(mentions)
+            for i in mentions:
+                print(i)
 
 
         break
