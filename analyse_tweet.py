@@ -189,13 +189,13 @@ def start_inpoda():
         elif action == 11:
             pass
         
-        # Nombre de tweets par un utilisateur
+        # Ensemble de tweets par un utilisateur
         elif action == 12:
             user = input("Entrer l'id de l'utilisateur\n    >")
             print(f"Les tweets de cet utilisateurs: ")
             for tweet in tweets:
                 if tweet.get_author_id() == user:
-                    print(tweet.get_text())
+                    print(f"{tweet.get_text()} \n")
 
         
         # Retourne l'ensemble de tweets mentionnant un utilisateur
