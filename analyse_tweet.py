@@ -106,11 +106,25 @@ def start_inpoda():
             names  = sorted(hashs, key= hashs.get, reverse= True )
             values = list(hashs.values())
             values.sort(reverse= True)
-            mpt.barh(range(rang), (values)[:rang], tick_label=names[:rang] )
+            mpt.barh(range(rang), (values)[:rang], tick_label= names[:rang] )
             mpt.show()
         # Top k utilisateurs
         elif action == 6:
-            pass
+            nbr_tweet = {}
+            for tweet in tweets:
+                    if tweet.get_author_id() not in nbr_tweet:
+                        nbr_tweet[tweet.get_author_id()] = 1
+                    else:
+                        nbr_tweet[tweet.get_author_id()] += 1
+            print(nbr_tweet)
+            rang = len(nbr_tweet) + 1
+            while not rang <= len(nbr_tweet):
+                rang = int(input("Rentrer le nombre de top utilisateurs\n    >"))
+            names  = sorted(nbr_tweet, key= nbr_tweet.get, reverse= True )
+            values = list(nbr_tweet.values())
+            values.sort(reverse= True)
+            mpt.barh(range(rang), (values)[:rang], tick_label= names[:rang] )
+            mpt.show()
         
         # Top K utilisateurs mentionnés
         elif action == 7:
@@ -124,12 +138,12 @@ def start_inpoda():
             print(ments)
             print(len(ments))
             rang = len(ments) + 1
-            while not rang <= len(ments):
+            while not rang <= len(ments) or not type(rang) == int:
                 rang = int(input("Rentrer le nombre de top utilisateurs mentionnés \n    >"))
             names  = sorted(ments, key= ments.get, reverse= True )
             values = list(ments.values())
             values.sort(reverse= True)
-            mpt.barh(range(rang), (values)[:rang], tick_label=names[:rang] )
+            mpt.barh(range(rang), (values)[:rang], tick_label= names[:rang] )
             mpt.show()
         
         # Top K topics
@@ -147,12 +161,12 @@ def start_inpoda():
             print(users)
             print(len(users))
             rang = len(users) + 1
-            while not rang <= len(users):
+            while not rang <= len(users) or not type(rang) == int:
                 rang = int(input("Rentrer le nombre d'utilisateurs que vous voulez \n    >"))
             names  = sorted(users, key= users.get, reverse= True )
             values = list(users.values())
             values.sort(reverse= True)
-            mpt.barh(range(rang), (values)[:rang], tick_label=names[:rang] )
+            mpt.barh(range(rang), (values)[:rang], tick_label= names[:rang] )
             mpt.show()
         
         # Nombre de publications par hashtag
@@ -167,6 +181,7 @@ def start_inpoda():
             print("Hashtags et le nombre de publications dans lesquelles ils aparaissent:")
             for key, value in hashs.items():
                 print(f"{value}   {key}")
+            
         
         # Nombre de publis par topic
         elif action == 11:
@@ -197,7 +212,7 @@ def start_inpoda():
                     johndoe = tweet.get_author_id()
                     if johndoe not in users:
                         users.append(johndoe)
-            print("Les utilisateurs ayant utilisé ce hashtag")
+            print("Les utilisateurs ayant utilisé ce hashtag: ")
             for i in users:
                 print(i)
 

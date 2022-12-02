@@ -7,7 +7,7 @@ class Tweet:
     def __init__(self, tweet_id, author_id, text, hashtags, mentions):
         self.tweet_id = tweet_id
         self.author_id = author_id
-        self.text = re.sub("[^ _~êçàÀâèéà…'] "," ",text)
+        self.text = re.sub("[^ _~êçàÀâèéà…a-zA-Z'] "," ",text)
         self.hashtags = hashtags
         self.mentions = mentions
 
