@@ -4,7 +4,7 @@ import re
 # Class Tweet et Methods
 class Tweet:
 
-    def __init__(self, tweet_id, author_id, text, hashtags, mentions, topic=None):
+    def __init__(self, tweet_id, author_id, text, hashtags, mentions, topic):
         self.tweet_id = tweet_id
         self.author_id = author_id
         self.text = re.sub("[^ _~êçàÀâèéà…a-zA-Z'] "," ",text)

@@ -38,6 +38,7 @@ def start_inpoda():
         for tweet in data:
             mentions = []
             hashtags = []
+            topics = []
             try:
                 for text in tweet["entities"]["hashtags"]:
                     hashtags.append(text["tag"])
@@ -48,7 +49,14 @@ def start_inpoda():
                     mentions.append(text["username"])
             except KeyError:
                 pass
-            tweets.append(Tweet(tweet["id"], tweet["author_id"], tweet["text"], hashtags, mentions))
+            try:
+                for text in tweet["context_annotations"]:
+                    top = text["domain"]["name"]
+                    if top not in topics:
+                        topics.append(top)
+            except KeyError:
+                pass
+            tweets.append(Tweet(tweet["id"], tweet["author_id"], tweet["text"], hashtags, mentions, topics))
         
         # Boucle instructions
         while action < 0 or action > 15 or not type(action) == int:
@@ -88,7 +96,14 @@ def start_inpoda():
         
         # identifie les topics de la publication
         elif action == 4:
-            pass
+            tweet = get_tweet(tweet_id=input("Rentrer l'id du tweet\n    >"))
+            topic = tweet.get_topic()
+            if len(topic) != 0:
+                print("Sujet(s) du tweet: ")
+                for txt in topic:
+                    print(txt)
+            else:
+                print("Le tweet n'as pas de sujet discernable")
         
         # top K hashtags
         elif action == 5:
