@@ -152,8 +152,6 @@ def start_inpoda():
                     else:
                         ments[men] += 1
                         
-            print(ments)
-            print(len(ments))
             rang = len(ments) + 1
             while not rang <= len(ments) or not type(rang) == int:
                 rang = int(input("Rentrer le nombre de top utilisateurs mentionnés \n    >"))
@@ -191,8 +189,7 @@ def start_inpoda():
                     users[tweet.get_author_id()] = 1
                 else:
                     users[tweet.get_author_id()] += 1
-            print(users)
-            print(len(users))
+                    
             rang = len(users) + 1
             while not rang <= len(users) or not type(rang) == int:
                 rang = int(input("Rentrer le nombre d'utilisateurs que vous voulez \n    >"))
