@@ -157,15 +157,31 @@ def start_inpoda():
             rang = len(ments) + 1
             while not rang <= len(ments) or not type(rang) == int:
                 rang = int(input("Rentrer le nombre de top utilisateurs mentionnés \n    >"))
-            names  = sorted(ments, key= ments.get, reverse= True )
+            names  = sorted(ments, key=ments.get, reverse=True)
             values = list(ments.values())
-            values.sort(reverse= True)
+            values.sort(reverse=True)
             mpt.barh(range(rang), (values)[:rang], tick_label= names[:rang] )
             mpt.show()
         
         # Top K topics
         elif action == 8:
-            pass
+            tops = {}
+            for tweet in tweets:
+                for top in tweet.get_topic():
+                    if top not in tops:
+                        tops[top] = 1
+                    else:
+                        tops[top] += 1
+
+            rang = len(tops) + 1
+            while not rang <= len(tops) or not type(rang) == int:
+                rang = int(input("Rentrer le nombre de top utilisateurs mentionnés \n    >"))
+            names  = sorted(tops, key=tops.get, reverse=True)
+            values = list(tops.values())
+            values.sort(reverse= True)
+            mpt.barh(range(rang), (values)[:rang], tick_label=names[:rang])
+            mpt.show()
+            
         
         # Nombre de publications par utilisateur
         elif action == 9:
@@ -202,7 +218,16 @@ def start_inpoda():
         
         # Nombre de publis par topic
         elif action == 11:
-            pass
+            tops = {}
+            for tweet in tweets:
+                for top in tweet.get_topic():
+                    if top not in tops:
+                        tops[top] = 1
+                    else:
+                        tops[top] += 1
+            print("Sujets et le nombre de publications dans lesquelles ils aparaissent:")
+            for key, value in tops.items():
+                print(f"{value}   {key}")
         
         # Ensemble de tweets par un utilisateur
         elif action == 12:
