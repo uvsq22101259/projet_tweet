@@ -27,6 +27,7 @@ def get_tweet(tweet_id=0, tweet_user=0, tweet_content=0):
 # Boucle InPoDa
 def start_inpoda():
     global tweets
+    regex = re.compile("[^ -~êçàÀâèéà…a-zA-z']")
     while 1:
         tweets = []
         action = 16
@@ -57,7 +58,7 @@ def start_inpoda():
                         topics.append(top)
             except KeyError:
                 pass
-            tweets.append(Tweet(tweet["id"], tweet["author_id"], re.sub("[^ _~êçàÀâèéà…a-zA-Z'] ","",tweet["text"]), hashtags, mentions, topics))
+            tweets.append(Tweet(tweet["id"], tweet["author_id"], regex.sub("",tweet["text"]), hashtags, mentions, topics))
         ldz = open("landzone.txt", "w")
         for tweet in tweets:
             ldz.write(str(tweet.__dict__) + "\n")
