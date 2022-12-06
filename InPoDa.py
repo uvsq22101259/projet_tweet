@@ -59,14 +59,13 @@ def start_inpoda():
             except KeyError:
                 pass
             tweets.append(Tweet(tweet["id"], tweet["author_id"], regex.sub("",tweet["text"]), hashtags, mentions, topics))
+        
         ldz = open("landzone.txt", "w")
         for tweet in tweets:
             ldz.write(str(tweet.__dict__) + "\n")
         ldz.close()
             
 
-
-        
         # Boucle instructions
         while action < 0 or action > 15 or not type(action) == int:
             try:
@@ -188,8 +187,7 @@ def start_inpoda():
             values.sort(reverse= True)
             mpt.barh(range(rang), (values)[:rang], tick_label=names[:rang])
             mpt.show()
-            
-        
+               
         # Nombre de publications par utilisateur
         elif action == 9:
             users = {}
@@ -221,7 +219,6 @@ def start_inpoda():
             for key, value in hashs.items():
                 print(f"{value}   {key}")
             
-        
         # Nombre de publis par topic
         elif action == 11:
             tops = {}
@@ -243,7 +240,6 @@ def start_inpoda():
                 if tweet.get_author_id() == user:
                     print(f"{tweet.get_text()} \n")
 
-        
         # Retourne l'ensemble de tweets mentionnant un utilisateur
         elif action == 13:
             user = input("Entrer le pseudo de l'utilisateur\n   >")
