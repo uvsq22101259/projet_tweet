@@ -1,6 +1,7 @@
 import json
 from tweet import Tweet
 import matplotlib.pyplot as mpt
+import regex as re
 
 tweets = []
 
@@ -56,7 +57,14 @@ def start_inpoda():
                         topics.append(top)
             except KeyError:
                 pass
-            tweets.append(Tweet(tweet["id"], tweet["author_id"], tweet["text"], hashtags, mentions, topics))
+            tweets.append(Tweet(tweet["id"], tweet["author_id"], re.sub("[^ _~êçàÀâèéà…a-zA-Z'] ","",tweet["text"]), hashtags, mentions, topics))
+        ldz = open("landzone.txt", "w")
+        for tweet in tweets:
+            ldz.write(str(tweet.__dict__) + "\n")
+        ldz.close()
+            
+
+
         
         # Boucle instructions
         while action < 0 or action > 15 or not type(action) == int:
