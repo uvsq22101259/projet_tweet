@@ -272,7 +272,11 @@ def start_inpoda():
             for i in mentions:
                 print(i)
 
+        decision = int(input("Continuer ?\n[1] Oui\n    >"))
+        if decision:
+            start_inpoda()
+        else:
+            break
 
-        break
 
 start_inpoda()
