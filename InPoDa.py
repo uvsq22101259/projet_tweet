@@ -272,8 +272,8 @@ def start_inpoda():
             for i in mentions:
                 print(i)
 
-        decision = int(input("Continuer ?\n[1] Oui\n    >"))
-        if decision:
+        decision = input("Continuer ?\n[1] Oui\nAutre sinon\n    >")
+        if decision == '1':
             start_inpoda()
         else:
             break
